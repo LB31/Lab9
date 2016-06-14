@@ -9,7 +9,7 @@ public class Triangle extends JPanel {
 	
 	
 	public void paint(Graphics g) {
-		g.drawLine(50, 100, 0, 50);
+		g.drawLine(50, 50, 100, 100);
 //		g.setColor(Color.red);
 //		g.drawLine(50, 50, 10, 94);
 		

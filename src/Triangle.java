@@ -7,26 +7,42 @@ public class Triangle extends JPanel {
 	int height;
 	int width;
 	int layer = 1;
-	Color colours = new Color(255,255,255);
+	Color colours = new Color(255, 255, 255);
+
+	
+	
+	public void setColours(Color colours) {
+		this.colours = colours;
+	}
 
 	public Dimension getScreenSize() {
 		return screenSize;
 	}
-	
+
 	@Override
 	public void paint(Graphics g) {
-
-		for (int i = 1; i <= layer; i++) {
-			// left, top, right 
-			int[] xcoords = { 0, width / 2, width };
-			int[] ycoords = { height, 0, height };
-			g.setColor(colours);
+		Polygon pol = new Polygon();
+//		colours = new Color(255, 255, 255);
+		for (int i = 1; i <= 100; i++) {
+			// left, top, right
+			int[] xcoords = { 0+i*2, width / 2+i*10, width };
+			int[] ycoords = { height+i*2, 0, height };
+			pol.addPoint(10*i,6);
+			pol.addPoint(50,60);
+			pol.addPoint(80,74);
+			
+			
 			g.fillPolygon(xcoords, ycoords, xcoords.length);
+//			g.fillPolygon(pol);
+			g.setColor(colours);
 		}
-		layer *= 3;
-		System.out.println(layer);
-		if (layer <= 27)
+		
+		
+		if (layer < 27) {
+			layer *= 3;
+			System.out.println(layer);
 			paint(g);
+		}
 
 	}
 
@@ -36,13 +52,14 @@ public class Triangle extends JPanel {
 		width = (int) screenSize.getWidth();
 	}
 
-	public void createTriangle(Triangle tri) {
+	public void createTriangle(Triangle tri, Color colour) {
 		JFrame frame = new JFrame();
 		frame.getContentPane().add(tri);
 		Dimension sizes = tri.getScreenSize();
 		frame.setSize(sizes);
-		frame.setBackground(Color.RED);
+//		frame.setBackground(Color.RED);
 		frame.setVisible(true);
+		setColours(colour);
 
 	}
 
@@ -52,7 +69,8 @@ public class Triangle extends JPanel {
 
 	public static void main(String[] args) {
 		Triangle butz = new Triangle();
-		butz.createTriangle(butz);
+		butz.createTriangle(butz, new Color(255, 0, 0));
+//		butz.createTriangle(butz, new Color(0, 255, 255));
 
 	}
 

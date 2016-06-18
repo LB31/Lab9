@@ -20,8 +20,6 @@ public class TriangleEli extends JPanel {
 		g.setColor(Color.GREEN);
 		g.fillPolygon(xcoords, ycoords, xcoords.length);
 
-//		drawRecursiveTriangle(screenWidth, screenHeight, g);
-		
 	    subTriangle
 	    (
 	      1, //This represents the first recursion
@@ -43,19 +41,6 @@ public class TriangleEli extends JPanel {
 		screenHeight = 0;
 		screenWidth = 0;
 	}
-
-	private void drawRecursiveTriangle(int screenWidth, int screenHeight, Graphics g) {
-
-		if (screenHeight != 0 && screenWidth != 0) {
-			int[] xcoords2 = { screenWidth / 4, screenWidth - (screenWidth / 4), (screenWidth) / 2 };
-			int[] ycoords2 = { screenHeight / 2, screenHeight / 2, screenHeight };
-			g.setColor(Color.BLUE);
-			g.fillPolygon(xcoords2, ycoords2, xcoords2.length);
-
-			drawRecursiveTriangle(screenWidth / 2, screenHeight / 2, g);
-		}
-	}
-	
 	
 	public void subTriangle(int n, float x1, float y1, float x2, float y2, float x3, float y3, Graphics g, Color colour)
 	{
@@ -90,9 +75,9 @@ public class TriangleEli extends JPanel {
 	      (x3 + x2) / 2 + (x3 - x1) / 2, //x coordinate of second corner
 	      (y3 + y2) / 2 + (y3 - y1) / 2, //y coordinate of second corner
 	      (x3 + x2) / 2, //x coordinate of third corner
-	      (y1 + y2) / 2,  //y coordinate of third corner
+	      (y3 + y2) / 2,  //y coordinate of third corner
 	      g,
-	      Color.GREEN
+	      Color.PINK
 	    );
 	    //Smaller triangle 3
 	    subTriangle
@@ -103,27 +88,12 @@ public class TriangleEli extends JPanel {
 	      (x1 + x3) / 2 + (x1 - x2) / 2, //x coordinate of second corner
 	      (y1 + y3) / 2 + (y1 - y2) / 2, //y coordinate of second corner
 	      (x1 + x3) / 2, //x coordinate of third corner
-	      (y1 + y2) / 2,  //y coordinate of third corner
+	      (y1 + y3) / 2,  //y coordinate of third corner
 	      g,
 	      Color.YELLOW
 	    );
 	  }
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 
 	public static void main(String[] args) {

@@ -2,7 +2,7 @@ import java.awt.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-/* @author  Michael Kolling and David J. Barnes
+/* @author Leonid Barsht and Katharina Wunder
 * recursiveTriangle method by Lode Vandevenne:
 * http:lodev.org/cgtutor/sierpinski.html
 */

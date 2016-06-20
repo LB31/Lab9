@@ -1,4 +1,8 @@
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Toolkit;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -13,12 +17,20 @@ public class SierpinskiTriangle extends JPanel {
 	private int screenWidth;
 	private int depth = 7;
 
+	@Override
 	public void paint(Graphics g) {
 
 		screenSize = this.getSize();
 		screenHeight = (int) screenSize.getHeight();
 		screenWidth = (int) screenSize.getWidth();
 
+		if(screenWidth > screenHeight){
+			screenWidth = screenHeight;
+		}
+		else if (screenHeight > screenWidth){
+			screenHeight = screenWidth;
+		}
+		
 		int[] xcoords = { 0, screenWidth, (screenWidth) / 2 };
 		int[] ycoords = { screenHeight, screenHeight, 0 };
 		g.setColor(Color.LIGHT_GRAY);
@@ -26,13 +38,13 @@ public class SierpinskiTriangle extends JPanel {
 
 	    recursiveTriangle
 	    (
-	      1, 
+	      1,
 	      (0 + screenWidth) / 2,
-	      (screenHeight + screenHeight) / 2, 
+	      (screenHeight + screenHeight) / 2,
 	      (0 + (screenWidth / 2)) / 2,
-	      (screenHeight + 0) / 2, 
-	      (screenWidth + (screenWidth / 2)) / 2, 
-	      (screenHeight + 0) / 2, 
+	      (screenHeight + 0) / 2,
+	      (screenWidth + (screenWidth / 2)) / 2,
+	      (screenHeight + 0) / 2,
 	      g,
 	      Color.YELLOW
 	    );
@@ -53,48 +65,49 @@ public class SierpinskiTriangle extends JPanel {
 		int[] ycoords = { (int) y1, (int) y2, (int) y3 };
 		g.setColor(colour);
 		g.fillPolygon(xcoords, ycoords, xcoords.length);
+		Color randomColor = new Color((int)(Math.random() * 0x1000000));
 
 	  if(n < depth)
 	  {
 	    
 	    recursiveTriangle
 	    (
-	      n+1, 
-	      (x1 + x2) / 2 + (x2 - x3) / 2, 
-	      (y1 + y2) / 2 + (y2 - y3) / 2, 
-	      (x1 + x2) / 2 + (x1 - x3) / 2, 
-	      (y1 + y2) / 2 + (y1 - y3) / 2, 
-	      (x1 + x2) / 2, 
-	      (y1 + y2) / 2, 
+	      n+1,
+	      (x1 + x2) / 2 + (x2 - x3) / 2,
+	      (y1 + y2) / 2 + (y2 - y3) / 2,
+	      (x1 + x2) / 2 + (x1 - x3) / 2,
+	      (y1 + y2) / 2 + (y1 - y3) / 2,
+	      (x1 + x2) / 2,
+	      (y1 + y2) / 2,
 	      g,
-	      colour.darker()
+	      randomColor
 	    );
 	    
 	    recursiveTriangle
 	    (
-	      n+1, 
-	      (x3 + x2) / 2 + (x2 - x1) / 2, 
-	      (y3 + y2) / 2 + (y2 - y1) / 2, 
-	      (x3 + x2) / 2 + (x3 - x1) / 2, 
-	      (y3 + y2) / 2 + (y3 - y1) / 2, 
-	      (x3 + x2) / 2, 
-	      (y3 + y2) / 2, 
+	      n+1,
+	      (x3 + x2) / 2 + (x2 - x1) / 2,
+	      (y3 + y2) / 2 + (y2 - y1) / 2,
+	      (x3 + x2) / 2 + (x3 - x1) / 2,
+	      (y3 + y2) / 2 + (y3 - y1) / 2,
+	      (x3 + x2) / 2,
+	      (y3 + y2) / 2,
 	      g,
-	      colour.darker()
+	      randomColor
 	      
 	    );
 	    
 	    recursiveTriangle
 	    (
-	      n+1, 
-	      (x1 + x3) / 2 + (x3 - x2) / 2, 
-	      (y1 + y3) / 2 + (y3 - y2) / 2, 
-	      (x1 + x3) / 2 + (x1 - x2) / 2, 
-	      (y1 + y3) / 2 + (y1 - y2) / 2, 
-	      (x1 + x3) / 2, 
-	      (y1 + y3) / 2,  
+	      n+1,
+	      (x1 + x3) / 2 + (x3 - x2) / 2,
+	      (y1 + y3) / 2 + (y3 - y2) / 2,
+	      (x1 + x3) / 2 + (x1 - x2) / 2,
+	      (y1 + y3) / 2 + (y1 - y2) / 2,
+	      (x1 + x3) / 2,
+	      (y1 + y3) / 2,
 	      g,
-	      colour.darker()
+	      randomColor
 	    );
 	  }
 	}

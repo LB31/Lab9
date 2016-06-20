@@ -12,6 +12,10 @@ import javax.swing.JPanel;
 */
 public class SierpinskiTriangle extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Dimension screenSize;
 	private int screenHeight;
 	private int screenWidth;
